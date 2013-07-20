@@ -17,8 +17,8 @@ module.exports = exports = function (MWC) {
         }
 
         for (var i = 0; i < MWC.config.spine.domains.length; i++) {
-            if(/^[a-zA-Z0-9_]+$/.test(domains[i])){
-                MWC.spine[domains[i]]=assemblage.createMaster(MWC.config.spine.domains[i], {'port': port, 'host': host});
+            if(/^[a-zA-Z0-9_]+$/.test(MWC.config.spine.domains[i])){
+                MWC.spine[MWC.config.spine.domains[i]]=assemblage.createMaster(MWC.config.spine.domains[i], {'port': port, 'host': host});
             } else {
                 throw new Error('Error loading config! Domain '+domains[i]+' have wrong name. It name can be ONLY composed from A-Za-z0-9 and _')
             }
