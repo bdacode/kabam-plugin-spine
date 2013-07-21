@@ -4,7 +4,7 @@
     "description": "Task queue pluggin for mwc_core application.",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "./node_modules/.bin/vows --spec tests/*"
     },
     "repository": {
         "type": "git",
@@ -22,7 +22,8 @@
         "assemblage": "git+ssh://git@github.com:mywebclass/assemblage.git"
     },
     "devDependencies": {
-        "vows": "*"
+        "vows": "*",
+        "mwc_core": "git+ssh://git@github.com:mywebclass/mwc_core.git"
     },
     "author": "Anatolij Ostroumov",
     "license": "MIT",

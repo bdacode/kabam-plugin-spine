@@ -1,40 +1,57 @@
 {
-    "development":{
-        "hostUrl":"http://vvv.msk0.ru/",
-        "secret":"hammer on the keyboard",
-        "mongo_url":"mongodb://localhost/test",
-        "redis":{
-            "port": 6379,
-            "host": "localhost"
-        },
-        "spine":{
-            "domains":["urgentTasks","veryUrgentTasks","lessUrgentTasks","tasksToForgetAbout"]
-        }
+  "development": {
+    "hostUrl": "http://vvv.msk0.ru/",
+    "secret": "hammer on the keyboard",
+    "mongo_url": "mongodb://localhost/test",
+    "redis": {
+      "port": 6379,
+      "host": "localhost"
     },
-    "production":{
-        "hostUrl":"http://localhost/",
-        "secret":"hammer on the keyboard",
-        "mongo_url":"mongodb://localhost/test",
-        "redis":{
-            "port": 6379,
-            "host": "localhost"
-        },
-        "spine":{
-            "domains":["urgentTasks","veryUrgentTasks","lessUrgentTasks","tasksToForgetAbout"]
-        }
-
+    "sessionStorage": "redis",
+    "passport": {
+      "GITHUB_CLIENT_ID": "--insert-github-client-id-here--",
+      "GITHUB_CLIENT_SECRET": "--insert-github-client-secret-here--"
     },
-    "staging":{
-        "hostUrl":"http://localhost/",
-        "secret":"hammer on the keyboard",
-        "mongo_url":"mongodb://localhost/test",
-        "redis":{
-            "port": 6379,
-            "host": "localhost"
-        },
-        "spine":{
-            "domains":["urgentTasks","veryUrgentTasks","lessUrgentTasks","tasksToForgetAbout"]
-        }
-
+    "spine": {
+      "domains": ["urgentTasks", "veryUrgentTasks", "lessUrgentTasks", "tasksToForgetAbout"]
     }
+  },
+  "production": {
+    "hostUrl": "http://localhost/",
+    "secret": "hammer on the keyboard",
+    "mongo_url": "mongodb://localhost/test",
+    "redis": {
+      "port": 6379,
+      "host": "localhost"
+    },
+    "sessionStorage": "redis",
+    "passport": {
+      "GITHUB_CLIENT_ID": "--insert-github-client-id-here--",
+      "GITHUB_CLIENT_SECRET": "--insert-github-client-secret-here--"
+    },
+
+    "spine": {
+      "domains": ["urgentTasks", "veryUrgentTasks", "lessUrgentTasks", "tasksToForgetAbout"]
+    }
+
+  },
+  "staging": {
+    "hostUrl": "http://localhost/",
+    "secret": "hammer on the keyboard",
+    "mongo_url": "mongodb://localhost/test",
+    "redis": {
+      "port": 6379,
+      "host": "localhost"
+    },
+    "sessionStorage": "redis",
+    "passport": {
+      "GITHUB_CLIENT_ID": "--insert-github-client-id-here--",
+      "GITHUB_CLIENT_SECRET": "--insert-github-client-secret-here--"
+    },
+
+    "spine": {
+      "domains": ["urgentTasks", "veryUrgentTasks", "lessUrgentTasks", "tasksToForgetAbout"]
+    }
+
+  }
 }
