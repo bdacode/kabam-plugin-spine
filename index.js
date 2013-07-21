@@ -12,7 +12,7 @@ exports.extendCore = function (core) {
   //DI of spine into MWC object
   if (core.config.spine && core.config.spine.domains && core.config.spine.domains instanceof Array) {
     if (core.config.spine.domains.length == 0) {
-      throw new Error('Error loading config! Config.spine.domains have to be an array with at least 1 domain!')
+      throw new Error('Error loading config! Config.spine.domains have to be an array with at least 1 domain!');
     }
     for (var i = 0; i < core.config.spine.domains.length; i++) {
       if (/^[a-zA-Z0-9_]+$/.test(core.config.spine.domains[i])) {
