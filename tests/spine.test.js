@@ -15,6 +15,10 @@ var vows = require('vows'),
   },
   config = require('./../example/config.json')['development'];
 
+var MWC = new mwcCore(config);
+MWC.usePlugin(mwc_plugin_spine);
+MWC.listen(3000);
+
 vows.describe('mwc_plugin_spine')
   .addBatch({
     'mwc_plugin_spine have properly exposed internals': {
@@ -32,9 +36,6 @@ vows.describe('mwc_plugin_spine')
     },
     'mwc_plugin_spine extends mwcCore': {
       'topic': function () {
-        var MWC = new mwcCore(config);
-        MWC.usePlugin(mwc_plugin_spine);
-        MWC.listen(3000);
         return MWC;
       },
       'MWC application have exposed .spine object': function (topic) {
@@ -53,11 +54,7 @@ vows.describe('mwc_plugin_spine')
     'mwc_plugin_spine works': {
       'topic': function () {
         var promise = new (events.EventEmitter),
-          MWC = new mwcCore(config),
           worker = assemblage.createWorker('urgentTasks', {'port': MWC.config.redis.port, 'host': MWC.config.redis.host, prefix:''});
-
-        MWC.usePlugin(mwc_plugin_spine);
-        MWC.listen(3000);
 
         MWC.on('error',function(err){
           throw err;
@@ -70,15 +67,18 @@ vows.describe('mwc_plugin_spine')
             if (err) {
               throw err;
             }
-            assert.isString(jobId, 'JobId is not string!');
-            assert.isTrue(jobId.length > 3, 'Job id is too short!');
+            assert.isString(jobId, 'Job.id is not string!');
+            assert.isTrue(jobId.length > 3, 'Job.id is too short!');
           });
         }, 500);
 
         return promise;
       },
       'it issues task that assemblage understands': function (job) {
-        console.log(job);
+        //console.log(job);
+        assert.isString(job.id, 'Job.id is not string!');
+        assert.isTrue(job.id.length > 3, 'Job.id is too short!');
+
         assert.isObject(job.payload, 'job.payload do not exits!');
         assert.deepEqual(job.payload, payload, 'We recieved not the message we wanted');
         job.deleteJob(function () {
