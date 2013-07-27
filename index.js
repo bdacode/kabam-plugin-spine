@@ -26,7 +26,7 @@ exports.extendCore = function (core) {
   }
 };
 
-exports.setAppMiddlewares = function (core) {
+exports.extendMiddlewares = function (core) {
   return function (req, res, next) {
     res.spine = core.spine;
     next();

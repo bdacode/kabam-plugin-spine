@@ -26,12 +26,12 @@ vows.describe('mwc_plugin_spine')
       'it should have a extendCore(core) function': function (topic) {
         assert.isFunction(topic.extendCore);
       },
-      'it should have a setAppMiddlewares(core) function': function (topic) {
-        assert.isFunction(topic.setAppMiddlewares);
+      'it should have a extendMiddlewares(core) function': function (topic) {
+        assert.isFunction(topic.extendMiddlewares);
       },
       'it should not have other functions': function (topic) {
-        assert.isUndefined(topic.setAppParameters);
-        assert.isUndefined(topic.extendAppRoutes);
+        assert.isUndefined(topic.extendApp);
+        assert.isUndefined(topic.extendRoutes);
       }
     },
     'mwc_plugin_spine extends mwcCore': {
@@ -48,7 +48,7 @@ vows.describe('mwc_plugin_spine')
         assert.isFunction(topic.spine.tasksToForgetAbout.addJob);
       },
       'MWC application have spine middleware installed as first and only middleware': function (topic) {
-        assert.equal(topic.setAppMiddlewaresFunctions[0].SettingsFunction, mwc_plugin_spine.setAppMiddlewares);
+        assert.equal(topic.extendMiddlewaresFunctions[0].SettingsFunction, mwc_plugin_spine.extendMiddlewares);
       }
     },
     'mwc_plugin_spine works': {
