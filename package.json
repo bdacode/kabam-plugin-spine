@@ -23,7 +23,7 @@
     },
     "devDependencies": {
         "vows": "*",
-        "mwc_core": "git+https://github.com/mywebclass/mwc_core.git"
+        "mwc_core": "git+https://github.com/mywebclass/mwc_kernel.git"
     },
     "author": "Anatolij Ostroumov",
     "license": "MIT",
