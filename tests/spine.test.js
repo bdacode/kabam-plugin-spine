@@ -1,6 +1,6 @@
 var vows = require('vows'),
   assert = require('assert'),
-  mwcCore = require('mwc_core'),
+  mwcCore = require('mwc_kernel'),
   mwc_plugin_spine = require('./../index.js'),
   assemblage = require('assemblage'),
   events = require('events'),
