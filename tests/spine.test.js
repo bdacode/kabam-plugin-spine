@@ -15,7 +15,7 @@ var vows = require('vows'),
   },
   config = require('./../example/config.json')['development'];
 
-var MWC = new mwcCore(config);
+var MWC = mwcCore(config);
 MWC.usePlugin(mwc_plugin_spine);
 MWC.listen(3000);
 
@@ -48,13 +48,13 @@ vows.describe('mwc_plugin_spine')
         assert.isFunction(topic.spine.tasksToForgetAbout.addJob);
       },
       'MWC application have spine middleware installed as first and only middleware': function (topic) {
-        assert.equal(topic.extendMiddlewaresFunctions[0].SettingsFunction, mwc_plugin_spine.extendMiddlewares);
+        assert.equal(topic._extendMiddlewaresFunctions[0].SettingsFunction, mwc_plugin_spine.extendMiddlewares);
       }
     },
     'mwc_plugin_spine works': {
       'topic': function () {
         var promise = new (events.EventEmitter),
-          worker = assemblage.createWorker('urgentTasks', {'port': MWC.config.redis.port, 'host': MWC.config.redis.host, prefix:''});
+          worker = assemblage.createWorker('urgentTasks', {'client': MWC.createRedisClient()});
 
         MWC.on('error',function(err){
           throw err;

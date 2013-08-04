@@ -1,8 +1,8 @@
-var mwcCore = require('mwc_core'),
+var mwcCore = require('mwc_kernel'),
   assemblage = require('assemblage');//for worker only
 
 //setting up the config
-var MWC = new mwcCore(require('./config.json')['development']);
+var MWC = mwcCore(require('./config.json')['development']);
 MWC.usePlugin(require('./../index.js'));
 MWC.listen(3000);
 
@@ -24,7 +24,7 @@ setInterval(function () {
 
 
 //this is a background worker for this task.
-var worker = assemblage.createWorker('urgentTasks');
+var worker = assemblage.createWorker('urgentTasks',{client : MWC.createRedisClient()});
 worker.on('add', function (job) {
   console.log('Job recieved!');
   console.log(job.payload);
