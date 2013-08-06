@@ -4,7 +4,7 @@ var mwcCore = require('mwc_kernel'),
 //setting up the config
 var MWC = mwcCore(require('./config.json')['development']);
 MWC.usePlugin(require('./../index.js'));
-MWC.listen(3000);
+MWC.start();
 
 //starting spine task for queue 'urgentTasks'. Every 3 seconds it will emit the tasks
 setInterval(function () {

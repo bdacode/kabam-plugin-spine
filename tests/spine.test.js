@@ -17,17 +17,18 @@ var vows = require('vows'),
 
 var MWC = mwcCore(config);
 MWC.usePlugin(mwc_plugin_spine);
-MWC.listen(3000);
+MWC.start();
 
 vows.describe('mwc_plugin_spine')
   .addBatch({
     'mwc_plugin_spine have properly exposed internals': {
       'topic': mwc_plugin_spine,
       'it should have a extendCore(core) function': function (topic) {
-        assert.isFunction(topic.extendCore);
+        assert.isObject(topic.extendCore);
+        assert.isFunction(topic.extendCore.spine);
       },
       'it should have a extendMiddlewares(core) function': function (topic) {
-        assert.isFunction(topic.extendMiddlewares);
+        assert.isFunction(topic.extendMiddleware);
       },
       'it should not have other functions': function (topic) {
         assert.isUndefined(topic.extendApp);
@@ -46,9 +47,6 @@ vows.describe('mwc_plugin_spine')
         assert.isFunction(topic.spine.veryUrgentTasks.addJob);
         assert.isFunction(topic.spine.lessUrgentTasks.addJob);
         assert.isFunction(topic.spine.tasksToForgetAbout.addJob);
-      },
-      'MWC application have spine middleware installed as first and only middleware': function (topic) {
-        assert.equal(topic._extendMiddlewaresFunctions[0].SettingsFunction, mwc_plugin_spine.extendMiddlewares);
       }
     },
     'mwc_plugin_spine works': {
