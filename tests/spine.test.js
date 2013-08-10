@@ -24,15 +24,15 @@ vows.describe('mwc_plugin_spine')
     'mwc_plugin_spine have properly exposed internals': {
       'topic': mwc_plugin_spine,
       'it should have a extendCore(core) function': function (topic) {
-        assert.isObject(topic.extendCore);
-        assert.isFunction(topic.extendCore.spine);
+        assert.isObject(topic.core);
+        assert.isFunction(topic.core.spine);
       },
       'it should have a extendMiddlewares(core) function': function (topic) {
-        assert.isFunction(topic.extendMiddleware);
+        assert.isFunction(topic.middleware);
       },
       'it should not have other functions': function (topic) {
-        assert.isUndefined(topic.extendApp);
-        assert.isUndefined(topic.extendRoutes);
+        assert.isUndefined(topic.app);
+        assert.isUndefined(topic.routes);
       }
     },
     'mwc_plugin_spine extends mwcCore': {
@@ -40,13 +40,13 @@ vows.describe('mwc_plugin_spine')
         return MWC;
       },
       'MWC application have exposed .spine object': function (topic) {
-        assert.isObject(topic.spine);
+        assert.isObject(topic.mwc_plugin_spine.spine);
       },
       'MWC application have exposed objects for every task queue mentioned in config': function (topic) {
-        assert.isFunction(topic.spine.urgentTasks.addJob);
-        assert.isFunction(topic.spine.veryUrgentTasks.addJob);
-        assert.isFunction(topic.spine.lessUrgentTasks.addJob);
-        assert.isFunction(topic.spine.tasksToForgetAbout.addJob);
+        assert.isFunction(topic.mwc_plugin_spine.spine.urgentTasks.addJob);
+        assert.isFunction(topic.mwc_plugin_spine.spine.veryUrgentTasks.addJob);
+        assert.isFunction(topic.mwc_plugin_spine.spine.lessUrgentTasks.addJob);
+        assert.isFunction(topic.mwc_plugin_spine.spine.tasksToForgetAbout.addJob);
       }
     },
     'mwc_plugin_spine works': {
@@ -61,7 +61,7 @@ vows.describe('mwc_plugin_spine')
           promise.emit('success', job);
         });
         setTimeout(function () {
-          MWC.spine.urgentTasks.addJob(payload, function (err, jobId) {
+          MWC.mwc_plugin_spine.spine.urgentTasks.addJob(payload, function (err, jobId) {
             if (err) {
               throw err;
             }

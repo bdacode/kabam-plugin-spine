@@ -1,6 +1,6 @@
 var assemblage = require('assemblage');
-
-exports.extendCore = {'spine': function (config) {
+exports.name = 'mwc_plugin_spine'
+exports.core = {'spine': function (config) {
 
   var spine = {};
   //DI of spine into MWC object
@@ -24,9 +24,9 @@ exports.extendCore = {'spine': function (config) {
 
 }};
 
-exports.extendMiddleware = function (core) {
+exports.middleware = function (core) {
   return function (req, res, next) {
-    res.spine = core.spine;
+    res.spine = core.mwc_plugin_spine.spine;
     next();
   };
 };
