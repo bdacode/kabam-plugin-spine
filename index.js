@@ -1,5 +1,5 @@
 var assemblage = require('assemblage');
-exports.name = 'mwc_plugin_spine'
+exports.name = 'kabamPluginSpine';
 exports.core = {'spine': function (config) {
 
   var spine = {};

@@ -1,6 +1,6 @@
 var vows = require('vows'),
   assert = require('assert'),
-  mwcCore = require('mwc_kernel'),
+  mwcCore = require('kabam-kernel'),
   mwc_plugin_spine = require('./../index.js'),
   assemblage = require('assemblage'),
   events = require('events'),
@@ -40,13 +40,13 @@ vows.describe('mwc_plugin_spine')
         return MWC;
       },
       'MWC application have exposed .spine object': function (topic) {
-        assert.isObject(topic.mwc_plugin_spine.spine);
+        assert.isObject(topic.kabamPluginSpine.spine);
       },
       'MWC application have exposed objects for every task queue mentioned in config': function (topic) {
-        assert.isFunction(topic.mwc_plugin_spine.spine.urgentTasks.addJob);
-        assert.isFunction(topic.mwc_plugin_spine.spine.veryUrgentTasks.addJob);
-        assert.isFunction(topic.mwc_plugin_spine.spine.lessUrgentTasks.addJob);
-        assert.isFunction(topic.mwc_plugin_spine.spine.tasksToForgetAbout.addJob);
+        assert.isFunction(topic.kabamPluginSpine.spine.urgentTasks.addJob);
+        assert.isFunction(topic.kabamPluginSpine.spine.veryUrgentTasks.addJob);
+        assert.isFunction(topic.kabamPluginSpine.spine.lessUrgentTasks.addJob);
+        assert.isFunction(topic.kabamPluginSpine.spine.tasksToForgetAbout.addJob);
       }
     },
     'mwc_plugin_spine works': {
@@ -61,7 +61,7 @@ vows.describe('mwc_plugin_spine')
           promise.emit('success', job);
         });
         setTimeout(function () {
-          MWC.mwc_plugin_spine.spine.urgentTasks.addJob(payload, function (err, jobId) {
+          MWC.kabamPluginSpine.spine.urgentTasks.addJob(payload, function (err, jobId) {
             if (err) {
               throw err;
             }
