@@ -26,7 +26,7 @@ exports.core = {'spine': function (config) {
 
 exports.middleware = function (core) {
   return function (req, res, next) {
-    res.spine = core.mwc_plugin_spine.spine;
+    res.spine = core.kabamPluginSpine.spine;
     next();
   };
 };
