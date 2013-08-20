@@ -1,9 +1,8 @@
 var assemblage = require('assemblage');
 exports.name = 'kabamPluginSpine';
+//DI of spine into kabam
 exports.core = {'spine': function (config) {
-
   var spine = {};
-  //DI of spine into MWC object
   if (config.spine && config.spine.domains instanceof Array) {
     if (config.spine.domains.length == 0) {
       throw new Error('Error loading config! Config.spine.domains have to be an array with at least 1 domain!');
@@ -23,10 +22,10 @@ exports.core = {'spine': function (config) {
   }
 
 }};
-
+//DI of spine into request
 exports.middleware = function (core) {
-  return function (req, res, next) {
-    res.spine = core.kabamPluginSpine.spine;
+  return function (request, response, next) {
+    request.spine = core.kabamPluginSpine.spine;
     next();
   };
 };
