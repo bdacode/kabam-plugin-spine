@@ -23,7 +23,16 @@
     },
     "devDependencies": {
         "vows": "*",
-        "kabam-kernel": "git+https://github.com/mykabam/kabam-kernel.git"
+        "kabam-kernel": "git+https://github.com/mykabam/kabam-kernel.git",
+	"grunt": "*",
+	"grunt-contrib-watch": "*",
+	"grunt-contrib-jshint": "*",
+	"grunt-ngdoc": "*",
+	"grunt-contrib-copy": "*",
+	"grunt-ngdocs": "*",
+	"grunt-contrib-clean": "*",
+	"mocha": "*",
+	"grunt-simple-mocha": "*"
     },
     "author": "Anatolij Ostroumov",
     "license": "MIT",
